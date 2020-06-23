@@ -21,7 +21,8 @@ const getFullNamespace = (rootDir = __dirname, target) => {
 */
 exports = module.exports = (fileName, module) => {
   const pattern = path.join(module, fileName);  // pattern = **/**/entry.js 相对入口
-  const modules = getFullNamespace(resolve.getEntry(), pattern);  // (xxx/src/pages, **/**/entry.js)
+  const arg = process.argv && process.argv.length > 2 ? process.argv[2] : '';
+  const modules = getFullNamespace(resolve.getEntry(arg), pattern);  // (xxx/src/pages, **/**/entry.js)
   const modulesNotFound = Object.keys(modules).length === 0;
   if (modulesNotFound) {
     const fullPath = path.join(resolve.getEntry(), pattern);

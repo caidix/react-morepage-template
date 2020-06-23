@@ -10,8 +10,8 @@ class ResolveContainer {
   cd(home) {
     this.home = home;// 指定进入的地址
   }
-  getEntry() {
-    return path.join(this.home, resolve.src, resolve.entry) // xxxx/src/pages =>这里取得的是入口的门槛，与env.js中的entry组合即是多文件打包的地址.
+  getEntry(entry = '') {
+    return path.join(this.home, resolve.src, resolve.entry, entry) // xxxx/src/pages =>这里取得的是入口的门槛，与env.js中的entry组合即是多文件打包的地址.
   }
   getModule() {
     return path.join(this.home, resolve.src, resolve.module)
